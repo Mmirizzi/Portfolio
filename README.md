@@ -1,21 +1,14 @@
 # Portfolio di Michi Mirizzi
 
-Questo è il mio portfolio personale dove mostro i miei progetti e competenze come Junior Frontend Developer.
+Benvenuto nel mio portfolio online!  
+Qui puoi trovare alcuni dei miei progetti ed esercizi come Junior Frontend Developer.
 
-## Tecnologie
+🌐 **Portfolio live:** [https://portfolio-michi-mirizzis-projects.vercel.app](https://portfolio-michi-mirizzis-projects.vercel.app)
 
-- HTML  
-- CSS  
-- JavaScript  
-- React (in sviluppo)
+## Tecnologie usate:
+- HTML
+- CSS
+- JavaScript
+- React
 
-## Visualizza il sito online
-
-[https://Mmirizzi.github.io/portfolio](https://Mmirizzi.github.io/portfolio)
-
-## Come clonare il progetto
-
-```bash
-git clone https://github.com/Mmirizzi/portfolio.git
-cd portfolio
-# Apri il file index.html nel browser
+Contattami per feedback o collaborazioni!
