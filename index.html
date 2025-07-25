@@ -1,17 +1,16 @@
 <!DOCTYPE html>
 <html lang="it">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Portfolio - Michi  Mirizzi</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Portfolio - Michi Mirizzi</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <canvas id="matrix"></canvas>
 
   <!-- Header -->
   <header>
-    <div class="intro-box">
     <h1>Michi Mirizzi</h1>
     <p>Junior Frontend Developer</p>
     <nav>
@@ -20,110 +19,58 @@
       <a href="#contact">Contatti</a>
     </nav>
   </header>
-</div>
 
   <!-- Sezione Home -->
-  <section id="home">
+  <section id="home" class="intro-box">
     <h2>Benvenuto nel mio portfolio!</h2>
-    <div class="intro-box">
     <p>Qui trovi una raccolta dei miei esercizi e piccoli progetti mentre studio per diventare un frontend developer professionista.</p>
-    </div>
   </section>
 
   <!-- Sezione About Me -->
-  <section id="about">
+  <section id="about" class="intro-box">
     <h2>About Me</h2>
-    <div class="intro-box"> 
-    <p>Ciao! Sono Michi Mirizzi, attualmente studente presso l’ITS Apulia Digital Maker.  
-    Sto imparando a sviluppare interfacce web moderne usando HTML, CSS, JavaScript e React.
-    Ho una buona conoscenza di Java e Python, che mi permette di comprendere meglio la logica della programmazione,
-    sto imparando ad utilizzare Docker, Sql, pl/sql, creazione Database.</p> 
-    Sono motivato, curioso e pronto a mettermi alla prova in un contesto lavorativo.</p>
-    </div>
+    <p>
+      Ciao! Sono Michi Mirizzi, attualmente studente presso l’ITS Apulia Digital Maker.  
+      Sto imparando a sviluppare interfacce web moderne usando HTML, CSS, JavaScript e React.
+      Ho una buona conoscenza di Java e Python, che mi permette di comprendere meglio la logica della programmazione,
+      sto imparando ad utilizzare Docker, SQL, PL/SQL, creazione Database.
+    </p>
+    <p>Sono motivato, curioso e pronto a mettermi alla prova in un contesto lavorativo.</p>
   </section>
 
   <!-- Sezione Progetti -->
-  <section id="projects">
+  <section id="projects" class="intro-box">
     <h2>Progetti</h2>
-    <div class="intro-box">
     <p>Qui mostrerò alcuni progetti realizzati durante il mio percorso di studi.</p>
-    </div>
 
-    <div class="intro-box">
-      <h3>Progetto 1: polimorfismo-project</h3>
+    <article class="project">
+      <h3>Polimorfismo Project</h3>
       <p>Un esercizio per creare classi Java con animali e versi associati.</p>
-      <a href="#">Guarda il progetto</a>
-      <a href="https://github.com/Mmirizzi/polimorfismo-project" target="_blank">Codice su GitHub</a>
-    </div>
+      <p><em>Guarda il progetto non disponibile</em></p>
+      <a href="https://github.com/Mmirizzi/polimorfismo-project" target="_blank" rel="noopener noreferrer">Codice su GitHub</a>
+    </article>
 
-    <div class="intro-box">
-      <h3>Progetto 2: biblioteca_multimediale </h3>
-      <p>Un esercizio che simula una biblioteca con dei libri/autori da ricercare e salvare.</p>
-      <a href="#">Guarda il progetto</a>
-      <a href="https://github.com/Mmirizzi/biblioteca_multimediale" target="_blank">Codice su GitHub</a>
-    </div>
+    <article class="project">
+      <h3>Biblioteca Multimediale</h3>
+      <p>Un esercizio che simula una biblioteca con libri/autori da ricercare e salvare.</p>
+      <p><em>Guarda il progetto non disponibile</em></p>
+      <a href="https://github.com/Mmirizzi/biblioteca_multimediale" target="_blank" rel="noopener noreferrer">Codice su GitHub</a>
+    </article>
   </section>
 
   <!-- Sezione Contatti -->
-  <section id="contact">
+  <section id="contact" class="intro-box">
     <h2>Contattami</h2>
-    <div class="intro-box">
-    <p>Puoi scrivermi a: <a href="michimirizzi@gmail.com">michimirizzi@gmail.com</a></p>
-    <p>Oppure seguirmi su: 
-      <a href="https://github.com/Mmirizzi" target="_blank">GitHub</a> | 
-      <a href="https://www.linkedin.com/in/michi-mirizzi-58351b199" target="_blank">LinkedIn</a>
+    <p>Puoi scrivermi a: <a href="mailto:michimirizzi@gmail.com">michimirizzi@gmail.com</a></p>
+    <p>Oppure seguimi su: 
+      <a href="https://github.com/Mmirizzi" target="_blank" rel="noopener noreferrer">GitHub</a> | 
+      <a href="https://www.linkedin.com/in/michi-mirizzi-58351b199" target="_blank" rel="noopener noreferrer">LinkedIn</a>
     </p>
-    </div>
   </section>
 
   <footer>
     <p>&copy; 2025 Michi Mirizzi. Tutti i diritti riservati.</p>
   </footer>
-  <script>
-    const canvas = document.getElementById('matrix');
-    const ctx = canvas.getContext('2d');
-    
-    // Imposta la dimensione del canvas
-    canvas.width = window.innerWidth;
-    canvas.height = window.innerHeight;
-    
-    // Caratteri
-    const letters = '01';
-    const fontSize = 16;
-    const columns = canvas.width / fontSize;
-    
-    const drops = [];
-    for (let x = 0; x < columns; x++) {
-      drops[x] = Math.random() * canvas.height;
-    }
-    
-    function draw() {
-      // Sfondo semi-trasparente per effetto scia
-      ctx.fillStyle = 'rgba(0, 0, 0, 0.05)';
-      ctx.fillRect(0, 0, canvas.width, canvas.height);
-    
-      ctx.fillStyle = '#0F0'; // colore lettere
-      ctx.font = fontSize + 'px monospace';
-    
-      for (let i = 0; i < drops.length; i++) {
-        const text = letters[Math.floor(Math.random() * letters.length)];
-        ctx.fillText(text, i * fontSize, drops[i] * fontSize);
-    
-        if (drops[i] * fontSize > canvas.height && Math.random() > 0.975) {
-          drops[i] = 0;
-        }
-    
-        drops[i]++;
-      }
-    }
-    
-    setInterval(draw, 33);
-    
-    window.addEventListener('resize', () => {
-      canvas.width = window.innerWidth;
-      canvas.height = window.innerHeight;
-    });
-    </script>
-    
+
 </body>
 </html>
