@@ -30,7 +30,7 @@ header p {
 }
 
 nav a {
-  color:#6ca0dc;
+  color: #6ca0dc;
   text-decoration: none;
   margin: 0 1rem;
   font-weight: 600;
@@ -68,12 +68,25 @@ h2 {
   font-size: 2rem;
 }
 
+/* Wrapper griglia progetti */
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1rem;
+}
+
 /* Progetti */
 .project {
   background: rgba(255 255 255 / 0.1);
   padding: 1rem 1.5rem;
-  margin-top: 1.5rem;
   border-radius: 10px;
+  box-shadow: 0 4px 10px rgb(0 0 0 / 0.2);
+  transition: transform 0.3s ease;
+}
+
+.project:hover {
+  transform: translateY(-5px);
 }
 
 .project h3 {
@@ -90,7 +103,6 @@ h2 {
 
 .project a:hover,
 .project a:focus {
-  color: #6ca0dc;
   text-decoration: underline;
   outline: none;
 }
@@ -107,7 +119,7 @@ footer {
 
 /* Link email */
 a[href^="mailto:"] {
-  color:#6ca0dc;
+  color: #6ca0dc;
   text-decoration: none;
 }
 
@@ -130,5 +142,9 @@ a[href^="mailto:"]:focus {
 
   h2 {
     font-size: 1.5rem;
+  }
+
+  .projects-grid {
+    grid-template-columns: 1fr;
   }
 }
