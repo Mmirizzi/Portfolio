@@ -43,30 +43,8 @@
     <h2>Progetti</h2>
     <p>Qui mostrerò alcuni progetti realizzati durante il mio percorso di studi.</p>
 
-    <div class="projects-grid">
-      <article class="project">
-        <h3>Polimorfismo Project</h3>
-        <p>Un esercizio per creare classi Java con animali e versi associati.</p>
-        <p><em>Guarda il progetto non disponibile</em></p>
-        <a href="https://github.com/Mmirizzi/polimorfismo-project" target="_blank" rel="noopener noreferrer">Codice su GitHub</a>
-      </article>
-
-      <article class="project">
-        <h3>Biblioteca Multimediale</h3>
-        <p>Un esercizio che simula una biblioteca con libri/autori da ricercare e salvare.</p>
-        <p><em>Guarda il progetto non disponibile</em></p>
-        <a href="https://github.com/Mmirizzi/biblioteca_multimediale" target="_blank" rel="noopener noreferrer">Codice su GitHub</a>
-      </article>
-
-      <article class="project">
-        <h3>Stranger Things Recap</h3>
-        <p>Un'app interattiva realizzata con React, TailwindCSS, Framer Motion e Vite, per esplorare personaggi, stagioni e curiosità della serie cult Stranger Things.</p>
-        <p>
-          <a href="https://stranger-things-recap.vercel.app" target="_blank" rel="noopener noreferrer">Live Demo</a> | 
-          <a href="https://github.com/Mmirizzi/Stranger-Things-Recap" target="_blank" rel="noopener noreferrer">Codice su GitHub</a>
-        </p>
-      </article>
-    </div>
+    <!-- Progetti dinamici da GitHub (solo "featured") -->
+    <div id="projects-container" class="projects-grid" style="margin-top: 2rem;"></div>
   </section>
 
   <!-- Sezione Contatti -->
@@ -82,6 +60,50 @@
   <footer>
     <p>&copy; 2025 Michi Mirizzi. Tutti i diritti riservati.</p>
   </footer>
+
+  <!-- Script per caricare solo progetti "featured" da GitHub -->
+  <script>
+    const username = "Mmirizzi";
+    const projectsContainer = document.getElementById("projects-container");
+
+    fetch(`https://api.github.com/users/${username}/repos`)
+      .then(response => response.json())
+      .then(repos => {
+        const featuredRepos = repos.filter(repo => 
+          !repo.fork && 
+          repo.topics && 
+          repo.topics.includes("featured")
+        );
+
+        if (featuredRepos.length === 0) {
+          projectsContainer.innerHTML = "<p><em>Nessun progetto featured disponibile.</em></p>";
+          return;
+        }
+
+        featuredRepos.forEach(repo => {
+          const card = document.createElement("div");
+          card.className = "project-card";
+
+          const name = repo.name.replace(/[-_]/g, " ");
+          const description = repo.description || "Nessuna descrizione disponibile";
+
+          card.innerHTML = `
+            <h3>${name}</h3>
+            <p>${description}</p>
+            <p>
+              ${repo.homepage ? `<a href="${repo.homepage}" target="_blank" rel="noopener noreferrer">Live Demo</a> | ` : ""}
+              <a href="${repo.html_url}" target="_blank" rel="noopener noreferrer">Codice su GitHub</a>
+            </p>
+          `;
+
+          projectsContainer.appendChild(card);
+        });
+      })
+      .catch(error => {
+        console.error("Errore nel caricamento dei progetti da GitHub:", error);
+        projectsContainer.innerHTML = "<p><em>Impossibile caricare i progetti al momento.</em></p>";
+      });
+  </script>
 
 </body>
 </html>
